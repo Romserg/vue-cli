@@ -167,6 +167,7 @@
 				this.form.email = '';
 				this.form.name = '';
 				this.form.text = '';
+				this.$v.form.$reset();
 				this.show = false;
 				this.showErrorName = false;
 				this.showErrorEmail = false;
@@ -187,19 +188,19 @@
 		},
 		watch: {
 			'form.name'() {
-				if (this.$v.form.name.$invalid) {
+				if (this.$v.form.name.$invalid && this.$v.form.name.$dirty) {
 					this.showErrorName = true;
 				}
 				this.$v.form.name.$touch()
 			},
 			'form.email'() {
-				if (this.$v.form.email.$invalid) {
+				if (this.$v.form.email.$invalid && this.$v.form.email.$dirty) {
 					this.showErrorEmail = true;
 				}
 				this.$v.form.email.$touch()
 			},
 			'form.text'() {
-				if (this.$v.form.text.$invalid) {
+				if (this.$v.form.text.$invalid && this.$v.form.text.$dirty) {
 					this.showErrorText = true;
 				}
 				this.$v.form.text.$touch()
